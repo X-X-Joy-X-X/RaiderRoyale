@@ -1,0 +1,34 @@
+{
+    "name": "punch",
+    "maps": [
+        {
+            "name": "PLAYER",
+            "id": "bea5f10a-a331-446f-94c0-5ef7d762efc2",
+            "actions": [
+                {
+                    "name": "PUNCH",
+                    "type": "Button",
+                    "id": "80ceaa40-aa93-41ba-b0d8-75039be61079",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bba9ce41-505d-4e80-8a9c-c3750b2e43f7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PUNCH",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
