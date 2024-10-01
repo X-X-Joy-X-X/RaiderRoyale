@@ -27,6 +27,13 @@ public class CommandParser : MonoBehaviour
                 StartCoroutine(MoveCharacterForward(12.0f, 1.0f));
                 StartCoroutine(ResetPunchBool());
                 break;
+            case "jump":
+                playerAnimator.SetBool("isJump", true);
+
+
+                StartCoroutine(MoveCharacterForward(0.0f, 10.0f));
+                StartCoroutine(ResetJumpBool());
+                break;
 
             // Add more cases for other commands (e.g., "jump", "kick", etc.)
             default:
@@ -57,5 +64,10 @@ public class CommandParser : MonoBehaviour
         }
 
         rb.MovePosition(endPosition);  // Ensure final position is reached
+    }
+    IEnumerator ResetJumpBool()
+    {
+        yield return new WaitForSeconds(1.5f); // Short delay before resetting (fine-tune as needed)
+        playerAnimator.SetBool("isJump", false);
     }
 }
