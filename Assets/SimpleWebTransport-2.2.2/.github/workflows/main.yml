@@ -1,0 +1,37 @@
+name: Release
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+     - master
+  
+jobs:
+  Release:
+    runs-on: windows-latest
+    # needs: Tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.100'
+  
+      - name: Install unity-packer
+        run: dotnet tool install -g unity-packer
+  
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v3
+        with:
+          extra_plugins: |
+            @semantic-release/exec
+            @semantic-release/changelog
+            @semantic-release/git
+          branch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
